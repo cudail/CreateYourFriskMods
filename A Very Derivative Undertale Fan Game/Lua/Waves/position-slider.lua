@@ -72,7 +72,7 @@ function Update()
 
 	if derivative == 0 then
 		Player.MoveToAbs(x, y, false)
-	else
+	elseif derivative > 0 then
 		xd, yd = x - Arena.x, y - Arena.y - Arena.height/2
 		if derivative == 1 then
 			vx, vy = xd/50, yd/50
@@ -90,6 +90,11 @@ function Update()
 			vx, vy = vx+ax, vy+ay
 		end
 		Player.Move(vx, vy, false)
+	else
+		xd, yd = x - Arena.x, y - Arena.y - Arena.height/2
+		xr = scaledroot(xd, derivative-1)
+		yr = scaledroot(yd, derivative-1)
+		Player.MoveTo(xr, yr, false)
 	end
 
 	--reset stuff so that reversing direction isn't impossible as velocities race off exponentionally
@@ -144,7 +149,30 @@ function EndingWave()
 	ycontrol.remove()
 	ylabel.remove()
 
-	if derivative == 4 then
+	if derivative > 3 or derivative < -4 then
 		Encounter["enemies"][1]["canspare"] = true
 	end
+end
+
+function sign(num)
+	if num < 0 then
+		return -1
+	end
+	return 1
+end
+
+function root(num, d)
+	if d == 2 then
+		return math.sqrt(num)
+	else
+		return num ^ (1/d)
+	end
+end
+
+function scaledroot(num, d)
+	local abs = math.abs(num)
+	local pow = math.abs(d)
+	local val = sign(num) * root(abs, pow)
+	local scale = 88
+	return val * scale / root(scale, pow)
 end
