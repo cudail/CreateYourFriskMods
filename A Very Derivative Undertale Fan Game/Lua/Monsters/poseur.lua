@@ -37,7 +37,7 @@ function HandleAttack(attackstatus)
 		-- player pressed fight but didn't press Z afterwards
 	else
 		-- player did actually attack
-		differentiate(1)
+		next_stage()
 	end
 end
 
@@ -51,9 +51,21 @@ function HandleCustomCommand(command)
 	end
 end
 
+function next_stage()
+	if GetGlobal("derivative") < 0 then
+		differentiate(-1)
+	else
+		differentiate(1)
+	end
+end
+
 function differentiate(num)
 	local d = GetGlobal("derivative")
 	d = d+num
-	if d > 4 then d = 4 elseif d < 0 then d = 0 end
+	if d > 4 then
+		d = 4
+	elseif d < -5 then
+		d = -5
+	end
 	SetGlobal("derivative",d)
 end
