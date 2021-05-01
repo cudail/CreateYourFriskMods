@@ -1,5 +1,5 @@
 comments = {
-	"Smells like maths.",
+	"Smells like calculus.",
 	"Poseur is deriving like his\rlife depends on it.",
 	"Please write down the make\rand model of your calculator.",
 	"This round left as an excercise\rfor the player."}
@@ -23,8 +23,9 @@ differentiate_jokes = {
 	"Never, ever drink and derive.",
 	"Some find these jokes derivative.",
 	"Let's not go off on a tangent.",
-	"He can't differentiate between\rright and wrong."}
+	"She can't differentiate between\rright and wrong."}
 integral_jokes = {
+	"What is the integral of one\rover cabin?"}
 	"Why was log(x) fired from her\rjob? She just couldn't integrate.",
 	"This will be integral to your\rvictory.",
 	"You need to learn your limits.",
