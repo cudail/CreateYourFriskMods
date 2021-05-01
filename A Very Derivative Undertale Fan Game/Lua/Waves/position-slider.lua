@@ -70,10 +70,10 @@ function Update()
 	xcontrol.MoveTo(x, Arena.y+Arena.height+24)
 	ycontrol.MoveTo(Arena.x+Arena.width/2+20, y)
 
-	xd, yd = x - Arena.x, y - Arena.y - Arena.height/2
 	if derivative == 0 then
 		Player.MoveToAbs(x, y, false)
 	else
+		xd, yd = x - Arena.x, y - Arena.y - Arena.height/2
 		if derivative == 1 then
 			vx, vy = xd/50, yd/50
 		elseif derivative == 2 then
