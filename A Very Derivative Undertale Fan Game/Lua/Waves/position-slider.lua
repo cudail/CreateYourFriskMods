@@ -37,9 +37,11 @@ function Update()
 	Player.SetControlOverride(true)
 	if Input.GetKey("Mouse0") == 1 then
 		if mousecon == "" then
-			if (Input.MousePosX - xcontrol.x)*(Input.MousePosX - xcontrol.x) + (Input.MousePosY - xcontrol.y)*(Input.MousePosY - xcontrol.y) < 225 then
+			if (Input.MousePosX - xcontrol.x)*(Input.MousePosX - xcontrol.x) +
+			(Input.MousePosY - xcontrol.y)*(Input.MousePosY - xcontrol.y) < 225 then
 				mousecon = "x"
-			elseif (Input.MousePosX - ycontrol.x)*(Input.MousePosX - ycontrol.x) + (Input.MousePosY - ycontrol.y)*(Input.MousePosY - ycontrol.y) < 225 then
+			elseif (Input.MousePosX - ycontrol.x)*(Input.MousePosX - ycontrol.x) +
+			(Input.MousePosY - ycontrol.y)*(Input.MousePosY - ycontrol.y) < 225 then
 				mousecon = "y"
 			end
 		end
@@ -71,7 +73,7 @@ function Update()
 	xd, yd = x - Arena.x, y - Arena.y - Arena.height/2
 	if derivative == 0 then
 		Player.MoveToAbs(x, y, false)
-	elseif derivative == 1 then --I could generalise this instead of hard-coding, but I can't be bothered
+	elseif derivative == 1 then
 		vx, vy = xd/50, yd/50
 	elseif derivative == 2 then
 		ax, ay = xd/400, yd/400

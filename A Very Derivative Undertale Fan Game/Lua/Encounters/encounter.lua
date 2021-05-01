@@ -25,8 +25,8 @@ end
 function EnemyDialogueEnding()
 end
 
-function DefenseEnding() --This built-in function fires after the defense round ends.
-	encountertext = RandomEncounterText() --This built-in function gets a random encounter text from a random enemy.
+function DefenseEnding()
+	encountertext = RandomEncounterText()
 end
 
 function HandleSpare()
