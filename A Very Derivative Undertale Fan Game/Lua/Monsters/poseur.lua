@@ -1,19 +1,34 @@
-comments = {"Smells like maths.", "Poseur is deriving like his\rlife depends on it.", "Please write down the make\rand model of your calculator.","This round left as an excercise\rfor the player."}
+comments = {
+	"Smells like maths.",
+	"Poseur is deriving like his\rlife depends on it.",
+	"Please write down the make\rand model of your calculator.",
+	"This round left as an excercise\rfor the player."}
 commands = {"Differentiate", "Integrate", "Heal"}
-randomdialogue = {"An infinite number of\nmathematicians walk\ninto a bar...", "Why did the chicken\ncross the Mobius\nstrip?","What do you get\nwhen you cross a\nmosquito and a\nmountain climber?"}
+randomdialogue = {
+	"An infinite number of\nmathematicians walk\ninto a bar...",
+	"Why did the chicken\ncross the Mobius\nstrip?",
+	"What do you get\nwhen you cross a\nmosquito and a\nmountain climber?"}
 
-sprite = "poseur" --Always PNG. Extension is added automatically.
+sprite = "poseur"
 name = "Poseur"
 hp = 100
 atk = 1
 def = 1
 check = " [Insert maths joke here]"
-dialogbubble = "rightwide" -- See documentation for what bubbles you have available.
+dialogbubble = "rightwide"
 canspare = false
 cancheck = true
 
-differentiate_jokes = {"Never, ever drink and derive.","Some find these jokes derivative.","Let's not go off on a tangent.","He can't differentiate between\rright and wrong."}
-integral_jokes = {"Why was log(x) fired from her\rjob? She just couldn't integrate.","This will be integral to your\rvictory.","You need to learn your limits.","...plus C"}
+differentiate_jokes = {
+	"Never, ever drink and derive.",
+	"Some find these jokes derivative.",
+	"Let's not go off on a tangent.",
+	"He can't differentiate between\rright and wrong."}
+integral_jokes = {
+	"Why was log(x) fired from her\rjob? She just couldn't integrate.",
+	"This will be integral to your\rvictory.",
+	"You need to learn your limits.",
+	"...plus C"}
 
 -- Happens after the slash animation but before
 function HandleAttack(attackstatus)
@@ -25,7 +40,6 @@ function HandleAttack(attackstatus)
 	end
 end
 
--- This handles the commands; all-caps versions of the commands list you have above.
 function HandleCustomCommand(command)
 	if command == "DIFFERENTIATE" then
 		differentiate(1)
