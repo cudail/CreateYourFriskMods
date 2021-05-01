@@ -22,13 +22,15 @@ function EncounterStarting()
 		"Apple Tau",
 		"Frosted Mug",
 		"Fig Leibniz",
-		"Tangerine"},
-		{0,0,0,0,0})
+		"Tangerine",
+		"Onion Torus"},
+		{0,0,0,0,0,0})
 	Inventory.AddItem("Fibonachos")
 	Inventory.AddItem("Apple Tau")
 	Inventory.AddItem("Frosted Mug")
 	Inventory.AddItem("Fig Leibniz")
 	Inventory.AddItem("Tangerine")
+	Inventory.AddItem("Onion Torus")
 end
 
 function EnemyDialogueStarting()
@@ -57,6 +59,8 @@ function HandleItem(ItemID)
 		BattleDialog({"I prefer Hasan Fig al-Haytham."})
 	elseif ItemID == "TANGERINE" then
 		BattleDialog({"Equal to singerine over\rcosgerine."})
+	elseif ItemID == "ONION TORUS" then
+		BattleDialog({"Not sure if vegetarian."})
 	else
 		BattleDialog({"You ate "..ItemID.."."})
 	end
