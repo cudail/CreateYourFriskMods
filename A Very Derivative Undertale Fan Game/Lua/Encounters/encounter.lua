@@ -17,6 +17,18 @@ playernames = {"Alhazen","Newton","Leibniz"}
 
 function EncounterStarting()
 	Player.name = playernames[math.random(#playernames)]
+	Inventory.AddCustomItems({
+		"Fibonachos",
+		"Apple Tau",
+		"Frosted Mug",
+		"Fig Leibniz",
+		"Tangerine"},
+		{0,0,0,0,0})
+	Inventory.AddItem("Fibonachos")
+	Inventory.AddItem("Apple Tau")
+	Inventory.AddItem("Frosted Mug")
+	Inventory.AddItem("Fig Leibniz")
+	Inventory.AddItem("Tangerine")
 end
 
 function EnemyDialogueStarting()
@@ -34,5 +46,18 @@ function HandleSpare()
 end
 
 function HandleItem(ItemID)
-	BattleDialog({"Selected item " .. ItemID .. "."})
+	Player.Heal(20)
+	if ItemID == "FIBONACHOS" then
+		BattleDialog({"Each one is as big as the\rprevious two combined."})
+	elseif ItemID == "APPLE TAU" then
+		BattleDialog({"Twice as good as apple pi."})
+	elseif ItemID == "FROSTED MUG" then
+		BattleDialog({"Indistinguishable from a\rfrosted doughnut."})
+	elseif ItemID == "FIG LEIBNIZ" then
+		BattleDialog({"I prefer Hasan Fig al-Haytham."})
+	elseif ItemID == "TANGERINE" then
+		BattleDialog({"Equal to singerine over\rcosgerine."})
+	else
+		BattleDialog({"You ate "..ItemID.."."})
+	end
 end
