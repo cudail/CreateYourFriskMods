@@ -28,7 +28,6 @@ integral_jokes = {
 	"What is the integral of one\rover cabin?",
 	"Why was log(x) fired from her\rjob? She just couldn't integrate.",
 	"This will be integral to your\rvictory.",
-	"You need to learn your limits.",
 	"...plus C"}
 
 -- Happens after the slash animation but before
@@ -43,11 +42,19 @@ end
 
 function HandleCustomCommand(command)
 	if command == "DIFFERENTIATE" then
-		differentiate(1)
-		BattleDialog(differentiate_jokes[math.random(#differentiate_jokes)])
+		if GetGlobal("derivative") > 3 then
+			BattleDialog("This is getting a bit too\rderivative...")
+		else
+			differentiate(1)
+			BattleDialog(differentiate_jokes[math.random(#differentiate_jokes)])
+		end
 	elseif command == "INTEGRATE" then
-		differentiate(-1)
-		BattleDialog(integral_jokes[math.random(#integral_jokes)])
+		if GetGlobal("derivative") < -4 then
+			BattleDialog("You need to learn your limits.")
+		else
+			differentiate(-1)
+			BattleDialog(integral_jokes[math.random(#integral_jokes)])
+		end
 	end
 end
 
