@@ -73,22 +73,24 @@ function Update()
 	xd, yd = x - Arena.x, y - Arena.y - Arena.height/2
 	if derivative == 0 then
 		Player.MoveToAbs(x, y, false)
-	elseif derivative == 1 then
-		vx, vy = xd/50, yd/50
-	elseif derivative == 2 then
-		ax, ay = xd/400, yd/400
-		vx, vy = vx+ax, vy+ay
-	elseif derivative == 3 then
-		bx, by = xd/5000, yd/5000
-		ax, ay = ax+bx, ay+by
-		vx, vy = vx+ax, vy+ay
-	elseif derivative == 4 then
-		cx, cy = xd/10000, yd/10000
-		bx, by = bx+cx, by+cy
-		ax, ay = ax+bx, ay+by
-		vx, vy = vx+ax, vy+ay
+	else
+		if derivative == 1 then
+			vx, vy = xd/50, yd/50
+		elseif derivative == 2 then
+			ax, ay = xd/400, yd/400
+			vx, vy = vx+ax, vy+ay
+		elseif derivative == 3 then
+			bx, by = xd/5000, yd/5000
+			ax, ay = ax+bx, ay+by
+			vx, vy = vx+ax, vy+ay
+		elseif derivative == 4 then
+			cx, cy = xd/10000, yd/10000
+			bx, by = bx+cx, by+cy
+			ax, ay = ax+bx, ay+by
+			vx, vy = vx+ax, vy+ay
+		end
+		Player.Move(vx, vy, false)
 	end
-	Player.MoveToAbs(Player.absx+vx, Player.absy+vy, false)
 
 	--reset stuff so that reversing direction isn't impossible as velocities race off exponentionally
 	if Player.absx <= 228 or Player.absx >= 412 then
