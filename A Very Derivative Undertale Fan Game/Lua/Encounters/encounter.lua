@@ -5,13 +5,9 @@ arenasize = {155, 130}
 
 SetGlobal("derivative",0)
 
-enemies = {
-"poseur"
-}
+enemies = {"poseur"}
 
-enemypositions = {
-{0, 0}
-}
+enemypositions = {{0, 0}}
 
 playernames = {"Alhazen","Newton","Leibniz"}
 
@@ -31,12 +27,6 @@ function EncounterStarting()
 	Inventory.AddItem("Fig Leibniz")
 	Inventory.AddItem("Tangerine")
 	Inventory.AddItem("Onion Torus")
-end
-
-function EnemyDialogueStarting()
-end
-
-function EnemyDialogueEnding()
 end
 
 function DefenseEnding()
