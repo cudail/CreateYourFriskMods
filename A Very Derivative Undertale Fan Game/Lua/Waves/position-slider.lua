@@ -52,22 +52,22 @@ function Update()
 	else
 		mousecon = ""
 	end
-	
+
 	if x < Arena.x - Arena.width/2 then
 		x = Arena.x - Arena.width/2
 	elseif x > Arena.x + Arena.width/2 then
 		x = Arena.x + Arena.width/2
 	end
-	
+
 	if y < Arena.y then
 		y = Arena.y
 	elseif y > Arena.y + Arena.height then
 		y = Arena.y + Arena.height
 	end
-	
+
 	xcontrol.MoveTo(x, Arena.y+Arena.height+24)
 	ycontrol.MoveTo(Arena.x+Arena.width/2+20, y)
-	
+
 	xd, yd = x - Arena.x, y - Arena.y - Arena.height/2
 	if derivative == 0 then
 		Player.MoveToAbs(x, y, false)
@@ -87,7 +87,7 @@ function Update()
 		vx, vy = vx+ax, vy+ay
 	end
 	Player.MoveToAbs(Player.absx+vx, Player.absy+vy, false)
-	
+
 	--reset stuff so that reversing direction isn't impossible as velocities race off exponentionally
 	if Player.absx <= 228 or Player.absx >= 412 then
 		vx = 0
@@ -95,14 +95,14 @@ function Update()
 		bx = 0
 		cx = 0
 	end
-	
+
 	if Player.absy <= 103 or Player.absy >= 287 then
 		vy = 0
 		ay = 0
 		by = 0
 		cy = 0
 	end
-	
+
 	--bullets
 	spawntimer = spawntimer + 1
 	if spawntimer%30 == 0 then
@@ -113,22 +113,22 @@ function Update()
 			bullet.SetVar('vely', 0)
 			table.insert(bullets, bullet)
 	end
-	
+
 	for i=1,#bullets do
-			local bullet = bullets[i]
-			local velx = bullet.GetVar('velx')
-			local vely = bullet.GetVar('vely')
-			local newposx = bullet.x + velx
-			local newposy = bullet.y + vely
-			if(bullet.x > -Arena.width/2 and bullet.x < Arena.width/2) then
-					if(bullet.y < -Arena.height/2 + 8) then 
-							newposy = -Arena.height/2 + 8
-							vely = 4
-					end
+		local bullet = bullets[i]
+		local velx = bullet.GetVar('velx')
+		local vely = bullet.GetVar('vely')
+		local newposx = bullet.x + velx
+		local newposy = bullet.y + vely
+		if(bullet.x > -Arena.width/2 and bullet.x < Arena.width/2) then
+			if(bullet.y < -Arena.height/2 + 8) then
+				newposy = -Arena.height/2 + 8
+				vely = 4
 			end
-			vely = vely - 0.04
-			bullet.MoveTo(newposx, newposy)
-			bullet.SetVar('vely', vely)
+		end
+		vely = vely - 0.04
+		bullet.MoveTo(newposx, newposy)
+		bullet.SetVar('vely', vely)
 	end
 end
 
@@ -139,7 +139,7 @@ function EndingWave()
 	yaxis.remove()
 	ycontrol.remove()
 	ylabel.remove()
-	
+
 	if derivative == 4 then
 		Encounter["enemies"][1]["canspare"] = true
 	end

@@ -26,13 +26,13 @@ function EnemyDialogueEnding()
 end
 
 function DefenseEnding() --This built-in function fires after the defense round ends.
-    encountertext = RandomEncounterText() --This built-in function gets a random encounter text from a random enemy.
+	encountertext = RandomEncounterText() --This built-in function gets a random encounter text from a random enemy.
 end
 
 function HandleSpare()
-     State("ENEMYDIALOGUE")
+	 State("ENEMYDIALOGUE")
 end
 
 function HandleItem(ItemID)
-    BattleDialog({"Selected item " .. ItemID .. "."})
+	BattleDialog({"Selected item " .. ItemID .. "."})
 end
