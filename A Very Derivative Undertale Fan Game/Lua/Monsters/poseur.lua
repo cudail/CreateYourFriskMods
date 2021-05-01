@@ -3,7 +3,7 @@ comments = {
 	"Poseur is deriving like his\rlife depends on it.",
 	"Please write down the make\rand model of your calculator.",
 	"This round left as an excercise\rfor the player."}
-commands = {"Differentiate", "Integrate", "Heal"}
+commands = {"Differentiate", "Integrate"}
 randomdialogue = {
 	"An infinite number of\nmathematicians walk\ninto a bar...",
 	"Why did the chicken\ncross the Mobius\nstrip?",
