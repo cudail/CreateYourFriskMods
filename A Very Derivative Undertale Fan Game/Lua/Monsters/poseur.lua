@@ -1,6 +1,6 @@
 comments = {
 	"Smells like calculus.",
-	"Poseur is deriving like his\rlife depends on it.",
+	"Poseur is deriving like her\rlife depends on it.",
 	"Please write down the make\rand model of your calculator.",
 	"This round left as an excercise\rfor the player."}
 commands = {"Differentiate", "Integrate"}
