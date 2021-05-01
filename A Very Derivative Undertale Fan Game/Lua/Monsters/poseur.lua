@@ -48,10 +48,6 @@ function HandleCustomCommand(command)
 	elseif command == "INTEGRATE" then
 		differentiate(-1)
 		BattleDialog(integral_jokes[math.random(#integral_jokes)])
-	elseif command == "HEAL" then
-		Player.hp = Player.maxhp
-		Audio.PlaySound("healsound")
-		BattleDialog("Returned to full health")
 	end
 end
 
