@@ -14,11 +14,11 @@ hints = {"All items heal 10 HP.","The [color:00c000]food [color:ffffff]pickups w
 
 -- Happens after the slash animation but before
 function HandleAttack(attackstatus)
-    if attackstatus == -1 then
-        -- player pressed fight but didn't press Z afterwards
-    else
-        -- player did actually attack
-    end
+	if attackstatus == -1 then
+		-- player pressed fight but didn't press Z afterwards
+	else
+		-- player did actually attack
+	end
 end
 
 function HandleAttack(damage)
@@ -35,8 +35,8 @@ end
 
 -- This handles the commands; all-caps versions of the commands list you have above.
 function HandleCustomCommand(command)
-    if command == "FEED" then
-	    if GetGlobal("items") > 0 then
+	if command == "FEED" then
+		if GetGlobal("items") > 0 then
 			local itemList = GetGlobal('itemList')
 			Audio.PlaySound('dogsecret')
 			SetGlobal("items", GetGlobal("items")-1)
@@ -45,9 +45,7 @@ function HandleCustomCommand(command)
 		else
 			currentdialogue = {"You're out of food!"}
 		end
-
-
-    elseif command == "SING" then
+	elseif command == "SING" then
 		SetGlobal('timesSang', GetGlobal('timesSang') + 1)
 		if GetGlobal('timesSang') < 4 then
 			currentdialogue = {"You sing a song.\nOilliphest is angered!"}
@@ -55,9 +53,9 @@ function HandleCustomCommand(command)
 			currentdialogue = {"You're really not helping\ryourself with this."}
 		end
 		SetGlobal('hitCount',GetGlobal('hitCount') + 1)
-    elseif command == "HINT" then
+	elseif command == "HINT" then
 		local hintNo = 	GetGlobal('hint') + 1
-        if GetGlobal('collisionCount') >= GetGlobal('collisonsToWin') then
+				if GetGlobal('collisionCount') >= GetGlobal('collisonsToWin') then
 			currentdialogue = {"You've already won!"}
 		elseif hintNo <= #hints then
 			currentdialogue = hints[hintNo]
@@ -65,6 +63,6 @@ function HandleCustomCommand(command)
 			currentdialogue = {"Out of hints, sorry!"}
 		end
 		SetGlobal('hint', hintNo)
-    end
-    BattleDialog(currentdialogue)
+	end
+	BattleDialog(currentdialogue)
 end

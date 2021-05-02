@@ -12,11 +12,8 @@ sprlYpos = 26
 moveDis = 5
 
 
-
 function UpdateSpiral()
-
 	if turn % 3 ~= 0 or GetGlobal('round') > 8 then
-
 		local newBrick = CreateProjectile('bullets/square', sprlNextPlacement[1] ,  sprlNextPlacement[2] )
 		newBrick.sprite.SendToBottom()
 
@@ -42,8 +39,6 @@ function UpdateSpiral()
 			end
 		end
 
-
-
 		if sprlDirection == 'r' then
 			sprlXpos = sprlXpos + 1
 			sprlNextPlacement = {newBrick.x + moveDis, newBrick.y}
@@ -57,6 +52,5 @@ function UpdateSpiral()
 			sprlYpos = sprlYpos + 1
 			sprlNextPlacement = {newBrick.x, newBrick.y + moveDis}
 		end
-
 	end
 end

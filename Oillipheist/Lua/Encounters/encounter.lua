@@ -6,8 +6,8 @@ wavetimer = 5
 arenasize = {160, 130}
 
 enemies = {
-  "Oilli",
-  "inactive_ghost"
+	"Oilli",
+	"inactive_ghost"
 }
 
 enemypositions = {
@@ -56,8 +56,8 @@ function EnemyDialogueStarting()
 end
 
 function EnemyDialogueEnding()
-    -- Good location to fill the 'nextwaves' table with the attacks you want to have simultaneously.
-    -- This example line below takes a random attack from 'possible_attacks'.
+		-- Good location to fill the 'nextwaves' table with the attacks you want to have simultaneously.
+		-- This example line below takes a random attack from 'possible_attacks'.
 
 
 end
@@ -83,7 +83,7 @@ function EnteringState(newstate, oldstate)
 	if oldstate == 'MERCYMENU' and GetGlobal('spared') then
 		--DEBUG('kkkkkkkk')
 		BattleDialog({"YOU WON!\nYou earned 0 XP and 4 gold."})
-    elseif newstate == "ENEMYDIALOGUE" then
+	elseif newstate == "ENEMYDIALOGUE" then
 		if GetGlobal('collisionCount') <= GetGlobal('collisionsToCar') and GetGlobal('snakeLength') > 15 then
 			generalDialogue = {"You can't stop me.","Don't try to\ntie me in knots."}
 		elseif GetGlobal('hitCount') > 4 then
@@ -97,11 +97,11 @@ function EnteringState(newstate, oldstate)
 		end
 		enemies[2].Call('SetActive',false)
 		enemies[1].SetVar('currentdialogue', {generalDialogue[math.random(#generalDialogue)]})
-    elseif newstate ~= "ENEMYDIALOGUE" and oldstate == "ENEMYDIALOGUE" then
+	elseif newstate ~= "ENEMYDIALOGUE" and oldstate == "ENEMYDIALOGUE" then
 		if GetGlobal('spared') then
 			State("DONE")
 		end
-        local round = GetGlobal('round')
+				local round = GetGlobal('round')
 		if round == 0 then
 			nextwaves = { 'snake' }
 			wavetimer = math.huge --wave is manually ended from inside script
@@ -123,7 +123,7 @@ function EnteringState(newstate, oldstate)
 		if GetGlobal('collisionCount') >= GetGlobal('collisonsToWin') then
 			State("ACTIONSELECT")
 		end
-    elseif newstate ~= "DEFENDING" and oldstate == "DEFENDING" then
+	elseif newstate ~= "DEFENDING" and oldstate == "DEFENDING" then
 		if GetGlobal('collisionCount') >= GetGlobal('collisonsToWin') then
 			--DEBUG('you can spare now')
 			enemies[1].SetVar('canspare', true)
@@ -134,7 +134,7 @@ function EnteringState(newstate, oldstate)
 			oilli_stun.Set('oilli_blank')
 			encountertext = RandomEncounterText()
 		end
-    elseif newstate == 'MERCYMENU' then
+	elseif newstate == 'MERCYMENU' then
 		enemies[2].Call('SetActive',true)
 	elseif newstate == 'ACTIONSELECT' then
 		enemies[2].Call('SetActive',false)
@@ -144,12 +144,12 @@ end
 
 --Stolen from Underfell Muffet 0.2.2
 function HandleItem(ItemID)
-    if GetGlobal("items") > 0 then
-		local itemList = GetGlobal('itemList')
-        SetGlobal("items", GetGlobal('items')-1)
-        Player.Heal(10)
-        BattleDialog({"You ate " .. itemList[math.random(#itemList)] ..".\nYou recovered 10 HP!", "" .. GetGlobal("items") .. " items remaining."})
-    else
-        BattleDialog({"You're out of food!"})
-    end
+	if GetGlobal("items") > 0 then
+	local itemList = GetGlobal('itemList')
+		SetGlobal("items", GetGlobal('items')-1)
+		Player.Heal(10)
+		BattleDialog({"You ate " .. itemList[math.random(#itemList)] ..".\nYou recovered 10 HP!", "" .. GetGlobal("items") .. " items remaining."})
+	else
+		BattleDialog({"You're out of food!"})
+	end
 end

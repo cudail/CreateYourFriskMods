@@ -65,6 +65,5 @@ function UpdateRope()
 			rope.sprite.alpha = 0 --Set to invisible rather than calling Removed() as that was causing issues with iterating over the ropes table
 			rope.SetVar('mode','deactivated')
 		end
-
 	end
 end
