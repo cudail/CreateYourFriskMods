@@ -8,7 +8,7 @@ require "Libraries/bullets/bullet_spiral"
 turn = 1
 
 --TODO: make food bullets?
-						
+
 
 
 
@@ -19,19 +19,19 @@ function Update()
 	--if turn % 90 == 0 then
 	--	CreateRope(- Arena.width/2 - 16, 100)
 	--end
-	
+
 	--if (turn + 10) % 105 == 0 then
 	--	CreateRope(- Arena.width/2 - 16, -100)
 	--end
 
 	--UpdateSnake()
 	--UpdateRope()
-	
-	
-	
+
+
+
 	UpdateSpiral()
-	
-	
+
+
 	turn = turn + 1
 end
 
@@ -43,7 +43,7 @@ function OnHit(bullet)
 	if bullet.GetVar('bullet_type') == 'orange_trail' then
 		if not Player.isMoving then
 			Player.Hurt(2)
-		end	
+		end
 	elseif bullet.GetVar('bullet_type') == 'white_snake' then
 		Player.Hurt(4)
 	else

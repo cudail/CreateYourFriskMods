@@ -23,11 +23,11 @@ function Update()
 	if spawns[1] and (turn % 120 == 0  or turn == 1) then
 		CreateRope(- Arena.width/2 - 16, 100, false)
 	end
-	
+
 	if spawns[2] and  ((turn + 40) % 120 == 0 or turn == 1) then
 		CreateRope(- Arena.width/2 - 16, -100, false)
 	end
-	
+
 	if spawns[3] and  ((turn + 20) % 120 == 0 or turn == 10) then
 		CreateRope(Arena.width/2 + 16, 100, false)
 	end
@@ -36,9 +36,9 @@ function Update()
 		CreateRope(Arena.width/2 + 16, -100, false)
 	end
 
-	
+
 	UpdateRope()
-	
+
 	turn = turn + 1
 end
 
@@ -47,7 +47,7 @@ function OnHit(bullet)
 	if bullet.GetVar('bullet_type') == 'orange_trail' then
 		if not Player.isMoving then
 			Player.Hurt(2)
-		end	
+		end
 	elseif bullet.GetVar('bullet_type') == 'white_snake' then
 		Player.Hurt(4)
 	else

@@ -12,7 +12,7 @@ canspare = false
 cancheck = true
 hints = {"All items heal 10 HP.","The [color:00c000]food [color:ffffff]pickups will add an\ritem to your inventory.","Whenever Oillipheist eats he\rgrows longer.","Feeding him might help you.","To spare it make it collide\rwith itself several times."}
 
--- Happens after the slash animation but before 
+-- Happens after the slash animation but before
 function HandleAttack(attackstatus)
     if attackstatus == -1 then
         -- player pressed fight but didn't press Z afterwards
@@ -45,8 +45,8 @@ function HandleCustomCommand(command)
 		else
 			currentdialogue = {"You're out of food!"}
 		end
-        
-		
+
+
     elseif command == "SING" then
 		SetGlobal('timesSang', GetGlobal('timesSang') + 1)
 		if GetGlobal('timesSang') < 4 then

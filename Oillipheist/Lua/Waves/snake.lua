@@ -8,9 +8,9 @@ waveStartTime = Time.time
 
 
 function Update()
-	UpdateSnake()	
+	UpdateSnake()
 	turn = turn + 1
-	
+
 	Player.sprite.SendToTop()
 end
 
@@ -18,7 +18,7 @@ function OnHit(bullet)
 	if bullet.GetVar('bullet_type') == 'orange_trail' then
 		if not Player.isMoving then
 			Player.Hurt(2)
-		end	
+		end
 	elseif bullet.GetVar('bullet_type') == 'white_snake' then
 		Player.Hurt(4)
 	elseif bullet.GetVar('bullet_type') == 'food' then
