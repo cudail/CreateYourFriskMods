@@ -14,12 +14,12 @@ moveDis = 5
 
 
 function UpdateSpiral()
-	
+
 	if turn % 3 != 0 or GetGlobal('round') > 8 then
-	
+
 		local newBrick = CreateProjectile('bullets/square', sprlNextPlacement[1] ,  sprlNextPlacement[2] )
 		newBrick.sprite.SendToBottom()
-		
+
 		if sprlDirection == 'r' then
 			if sprlXpos == sprlXupperbound then
 				sprlXupperbound = sprlXupperbound - 1
@@ -34,16 +34,16 @@ function UpdateSpiral()
 			if sprlXpos == sprlXlowerbound then
 				sprlXlowerbound = sprlXlowerbound + 1
 				sprlDirection = 'u'
-			end				
+			end
 		elseif sprlDirection == 'u' then
 			if sprlYpos == sprlYupperbound then
 				sprlYupperbound = sprlYupperbound - 1
 				sprlDirection = 'r'
 			end
 		end
-		
-		
-		
+
+
+
 		if sprlDirection == 'r' then
 			sprlXpos = sprlXpos + 1
 			sprlNextPlacement = {newBrick.x + moveDis, newBrick.y}
@@ -57,6 +57,6 @@ function UpdateSpiral()
 			sprlYpos = sprlYpos + 1
 			sprlNextPlacement = {newBrick.x, newBrick.y + moveDis}
 		end
-		
+
 	end
 end

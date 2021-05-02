@@ -38,7 +38,7 @@ function EncounterStarting()
 	SetGlobal('spared', false)
 	SetGlobal('hint', 0)
 	Audio.Volume(0.07)
-	--Audio.Stop() 
+	--Audio.Stop()
 
 	SetGlobal('hitCount', 0) --Number of times the player has dealt damage
 	SetGlobal('collisionCount', 0)	--Number of times you've managed to make the snake collide with itself - win condition
@@ -58,7 +58,7 @@ end
 function EnemyDialogueEnding()
     -- Good location to fill the 'nextwaves' table with the attacks you want to have simultaneously.
     -- This example line below takes a random attack from 'possible_attacks'.
-	
+
 
 end
 
@@ -66,20 +66,20 @@ function HandleSpare()
 	--DEBUG('~~~~~~~')
 	--DEBUG(GetGlobal('collisionCount'))
 	--DEBUG(GetGlobal('collisonsToWin'))
-	--TODO - REMOVE STUNNED SPRITE, THEN 
+	--TODO - REMOVE STUNNED SPRITE, THEN
 	if GetGlobal('collisionCount') >= GetGlobal('collisonsToWin') then
 		---DEBUG('++++++')
 		oilli_stun.Set('oilli_blank')
 		enemies[1].Call('SetSprite','oilli')
 		SetGlobal('spared', true)
 	end
-	
+
 	State("ENEMYDIALOGUE")
 end
 
 
 function EnteringState(newstate, oldstate)
-	
+
 	if oldstate == 'MERCYMENU' and GetGlobal('spared') then
 		--DEBUG('kkkkkkkk')
 		BattleDialog({"YOU WON!\nYou earned 0 XP and 4 gold."})
@@ -113,14 +113,14 @@ function EnteringState(newstate, oldstate)
 			wavetimer = 10
 		else
 			nextwaves = {'snake','ropes'}
-			wavetimer = math.huge --wave is manually ended from inside script	
+			wavetimer = math.huge --wave is manually ended from inside script
 		end
 		--nextwaves = { 'spiral' }
 		--wavetimer = 200
-	
+
 		SetGlobal('round', GetGlobal('round') + 1)
-		
-		if GetGlobal('collisionCount') >= GetGlobal('collisonsToWin') then 
+
+		if GetGlobal('collisionCount') >= GetGlobal('collisonsToWin') then
 			State("ACTIONSELECT")
 		end
     elseif newstate != "DEFENDING" and oldstate == "DEFENDING" then

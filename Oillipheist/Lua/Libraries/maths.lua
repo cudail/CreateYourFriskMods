@@ -1,9 +1,9 @@
 -- maths functions
-function AbsValBiggerThan ( this, that ) 
+function AbsValBiggerThan ( this, that )
 	return ( this * this ) > ( that * that )
 end
 
-function Sign( n ) 
+function Sign( n )
 	if n < 0 then
 		return -1
 	else
@@ -61,5 +61,5 @@ function SqrAbs( v ) --absolute value of a vector squared
 	for i = 1, #v do
 		result = result + v[i] * v[i]
 	end
-	return result	
+	return result
 end
