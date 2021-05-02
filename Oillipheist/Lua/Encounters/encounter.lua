@@ -97,7 +97,7 @@ function EnteringState(newstate, oldstate)
 		end
 		enemies[2].Call('SetActive',false)
 		enemies[1].SetVar('currentdialogue', {generalDialogue[math.random(#generalDialogue)]})
-    elseif newstate != "ENEMYDIALOGUE" and oldstate == "ENEMYDIALOGUE" then
+    elseif newstate ~= "ENEMYDIALOGUE" and oldstate == "ENEMYDIALOGUE" then
 		if GetGlobal('spared') then
 			State("DONE")
 		end
@@ -123,7 +123,7 @@ function EnteringState(newstate, oldstate)
 		if GetGlobal('collisionCount') >= GetGlobal('collisonsToWin') then
 			State("ACTIONSELECT")
 		end
-    elseif newstate != "DEFENDING" and oldstate == "DEFENDING" then
+    elseif newstate ~= "DEFENDING" and oldstate == "DEFENDING" then
 		if GetGlobal('collisionCount') >= GetGlobal('collisonsToWin') then
 			--DEBUG('you can spare now')
 			enemies[1].SetVar('canspare', true)

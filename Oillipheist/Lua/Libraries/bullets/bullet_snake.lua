@@ -254,7 +254,7 @@ function CheckForCollisionAndReact()
 	local blockedDirections = GetBlockedDirections()
 
 	--check if the way ahead of us is blocked
-	if blockedDirections[HeadingToDirection(snakeHeading)] != 0 then
+	if blockedDirections[HeadingToDirection(snakeHeading)] ~= 0 then
 
 		if GetGlobal('collisionCount') < GetGlobal('collisionsToCar') then
 			SetGlobal('collisionCount', GetGlobal('collisionCount') + 1)
@@ -262,7 +262,7 @@ function CheckForCollisionAndReact()
 			snakeDiedOnTurn = turn
 		else
 			--if all directions are blocked the snek is ded and we need to do something about that :(
-			if blockedDirections[1] != 0 and blockedDirections[2] != 0 and blockedDirections[3] != 0 and blockedDirections[4] != 0 then
+			if blockedDirections[1] ~= 0 and blockedDirections[2] ~= 0 and blockedDirections[3] ~= 0 and blockedDirections[4] ~= 0 then
 				SetGlobal('collisionCount', GetGlobal('collisionCount') + 1)
 				Audio.PlaySound('hitsound')
 				snakeDiedOnTurn = turn
