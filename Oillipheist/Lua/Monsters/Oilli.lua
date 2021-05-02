@@ -36,12 +36,13 @@ end
 -- This handles the commands; all-caps versions of the commands list you have above.
 function HandleCustomCommand(command)
 	if command == "FEED" then
-		if GetGlobal("items") > 0 then
+		if Inventory.ItemCount > 0 then
 			local itemList = GetGlobal('itemList')
 			Audio.PlaySound('dogsecret')
-			SetGlobal("items", GetGlobal("items")-1)
+			local itemName = Inventory.GetItem(1)
+			Inventory.RemoveItem(1)
 			SetGlobal('snakeLength', GetGlobal('snakeLength') + 3)
-			currentdialogue = {"You fed it " .. itemList[math.random(#itemList)] ..".\nOilliphest grew longer!", "" .. GetGlobal("items") .. " items remaining."}
+			currentdialogue = {"You fed it " .. itemName..".\nOilliphest grew longer!", "" .. Inventory.ItemCount .. " item".. (Inventory.ItemCount == 1 and "" or "s") .." remaining."}
 		else
 			currentdialogue = {"You're out of food!"}
 		end

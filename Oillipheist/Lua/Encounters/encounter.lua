@@ -30,10 +30,29 @@ function EncounterStarting()
 	--Global variables for fight:
 	enemies[2].Call('SetActive',false)
 	--enemies[1].SetVar('canspare', true)
+	local itemList = {
+		"Roll",
+		"Burger",
+		"Crisps",
+		"Pumpkin Ring",
+		"Gummy Snakes",
+		"Onion",
+		"Blue",
+		"Taco Chips",
+		"TestDog1",
+		"Sausage"}
+	SetGlobal('itemList', itemList)
+	for k, v in pairs(itemList) do
+		Inventory.AddCustomItems({v}, {0})
+	end
+	Inventory.AddItem(itemList[math.random(#itemList)])
+	Inventory.AddItem(itemList[math.random(#itemList)])
+	Inventory.AddItem(itemList[math.random(#itemList)])
+	Inventory.AddItem(itemList[math.random(#itemList)])
+	Inventory.AddItem(itemList[math.random(#itemList)])
 	SetGlobal('snakeLength', 6) --Lenght of snake bullet
 	SetGlobal('round', 0) --Progression of the encounter
-	SetGlobal('items', 5)
-	SetGlobal('itemList', {"a sandwich","a burger","a bag of crisps","the pumpkin rings","some rock candy","an onion","something blue","some taco chips"})
+
 	SetGlobal('sparable', false)
 	SetGlobal('spared', false)
 	SetGlobal('hint', 0)
@@ -142,14 +161,29 @@ function EnteringState(newstate, oldstate)
 end
 
 
---Stolen from Underfell Muffet 0.2.2
 function HandleItem(ItemID)
-	if GetGlobal("items") > 0 then
-	local itemList = GetGlobal('itemList')
-		SetGlobal("items", GetGlobal('items')-1)
-		Player.Heal(10)
-		BattleDialog({"You ate " .. itemList[math.random(#itemList)] ..".\nYou recovered 10 HP!", "" .. GetGlobal("items") .. " items remaining."})
+	Player.Heal(10)
+	if ItemID == "ROLL" then
+		BattleDialog({"You ate the chicken roll."})
+	elseif ItemID == "BURGER" then
+		BattleDialog({"Borgar."})
+	elseif ItemID == "CRISPS" then
+		BattleDialog({"You ate a bag of crisps."})
+	elseif ItemID == "PUMPKIN RING" then
+		BattleDialog({"You ate the pumpkin rings."})
+	elseif ItemID == "GUMMY SNAKES" then
+		BattleDialog({"You ate the gummy snakes."})
+	elseif ItemID == "ONION" then
+		BattleDialog({"You ate a nonion"})
+	elseif ItemID == "BLUE" then
+		BattleDialog({"You ate something blue."})
+	elseif ItemID == "TACO CHIPS" then
+		BattleDialog({"You ate the taco chips."})
+	elseif ItemID == "TESTDOG1" then
+		BattleDialog({"Consumed."})
+	elseif ItemID == "SAUSAGE" then
+		BattleDialog({"You ate the sausage."})
 	else
-		BattleDialog({"You're out of food!"})
+		BattleDialog({"You ate "..ItemID.."."})
 	end
 end

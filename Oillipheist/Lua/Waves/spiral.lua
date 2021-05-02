@@ -19,7 +19,8 @@ function OnHit(bullet)
 		Player.Hurt(4)
 	elseif bullet.GetVar('bullet_type') == 'food' then
 		Audio.PlaySound('healsound')
-		SetGlobal("items", GetGlobal("items")+1)
+		local itemList = GetGlobal("itemList")
+		Inventory.AddItem(itemList[math.random(#itemList)])
 		SetGlobal("foodActive",false)
 		bullet.Remove()
 	else
