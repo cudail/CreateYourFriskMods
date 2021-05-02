@@ -15,7 +15,7 @@ moveDis = 5
 
 function UpdateSpiral()
 
-	if turn % 3 != 0 or GetGlobal('round') > 8 then
+	if turn % 3 ~= 0 or GetGlobal('round') > 8 then
 
 		local newBrick = CreateProjectile('bullets/square', sprlNextPlacement[1] ,  sprlNextPlacement[2] )
 		newBrick.sprite.SendToBottom()
