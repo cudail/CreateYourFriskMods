@@ -12,6 +12,19 @@ canspare = false
 cancheck = true
 hints = {"All items heal 10 HP.","The [color:00c000]food [color:ffffff]pickups will add an\ritem to your inventory.","Whenever Oillipheist eats he\rgrows longer.","Feeding him might help you.","To spare it make it collide\rwith itself several times."}
 
+
+item_names = {
+		Roll = "a chicken roll",
+		Burger = "a burger",
+		Crisps = "a bag of crisps",
+		Onion = "a nonion",
+		Blue = "something blue",
+		TestDog1 = "TestDog1",
+		Sausage = "a sausage"}
+item_names["Pumpkin Ring"] = "a pumpkin ring"
+item_names["Gummy Snakes"] = "some gummy snakes"
+item_names["Taco Chips"] = "some taco chips"
+
 -- Happens after the slash animation but before
 function HandleAttack(attackstatus)
 	if attackstatus == -1 then
@@ -42,7 +55,7 @@ function HandleCustomCommand(command)
 			local itemName = Inventory.GetItem(1)
 			Inventory.RemoveItem(1)
 			SetGlobal('snakeLength', GetGlobal('snakeLength') + 3)
-			currentdialogue = {"You fed it " .. itemName..".\nOilliphest grew longer!", "" .. Inventory.ItemCount .. " item".. (Inventory.ItemCount == 1 and "" or "s") .." remaining."}
+			currentdialogue = {"You fed it " .. (item_names[itemName] or itemName) ..".\nOilliphest grew longer!", "" .. Inventory.ItemCount .. " item".. (Inventory.ItemCount == 1 and "" or "s") .." remaining."}
 		else
 			currentdialogue = {"You're out of food!"}
 		end
