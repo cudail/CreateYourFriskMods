@@ -29,13 +29,10 @@ function UpdateRope()
 		elseif rope.GetVar('mode') == 'attacking' then
 			rope.Move(rope.GetVar('facing') * 4,0)
 		end
-
-
 		if rope.GetVar('ymovement') * rope.y > Arena.height/2 or rope.GetVar('facing') * rope.x > Arena.width/2 then
 			rope.sprite.SendToBottom()
 			rope.sprite.alpha = 0 --Set to invisible rather than calling Removed() as that was causing issues with iterating over the ropes table
 			rope.SetVar('mode','deactivated')
 		end
-
 	end
 end

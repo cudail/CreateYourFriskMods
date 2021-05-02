@@ -7,9 +7,9 @@ function CreateSnake() -- call this near the top of the wave script or whenever 
 	snakeDiedOnTurn = -1				--used for the snake's death animation
 	headings = {{1,0},{0,-1},{-1,0},{0,1}} --vector representations of four cardinal directions
 	directionsToAxes = {1,2,1,2} 	--maps our four cardinal directions to their appropriate axes
-									--{right, down, left, up} -> x,y
-									--should be read as {x,y,x,y}
-    directionsToSign = {1,-1,-1,1}
+	--{right, down, left, up} -> x,y
+	--should be read as {x,y,x,y}
+	directionsToSign = {1,-1,-1,1}
 
 	--now let's make our snake
 	snakeStartPositions = {{ -Arena.width/2 + 5 ,  Arena.height/2 - 5 },{ Arena.width/2 - 5 ,  Arena.height/2 - 5 },{ Arena.width/2 - 5 , - Arena.height/2 + 5 },{ - Arena.width/2 + 5 , - Arena.height/2 + 5 }}
